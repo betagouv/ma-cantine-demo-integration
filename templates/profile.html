@@ -1,0 +1,9 @@
+{% if profile %}
+<pre>
+{{ profile|tojson }}
+</pre>
+<pre>
+{{ previews|tojson }}
+</pre>
+<a href="/logout">logout</a>
+{% endif %}
