@@ -34,6 +34,8 @@ SERVICE_URL=https://ma-cantine-demo.cleverapps.io ou https://ma-cantine.agricult
 
 Vous trouverez les valeurs de `CLIENT_ID` et `CLIENT_SECRET` lors de la création de votre application dans l'éspace dév sur notre site [démo](https://ma-cantine-demo.cleverapps.io/developpement-et-apis/). Enregistrez ces valeurs avant qu'ils soient sécurisés avec un hash.
 
+![Screenshot from 2022-10-03 18-08-40](https://user-images.githubusercontent.com/9282816/193626101-160b50de-52ec-4738-becd-3832ca68644c.png)
+
 #### 4- Démarrez l'application
 
 Pour démarrer le serveur, utilisez la commande `flask run`.
