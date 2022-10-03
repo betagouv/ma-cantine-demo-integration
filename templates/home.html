@@ -1,1 +1,9 @@
-<a href="/login">login</a>
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Login{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <a href="/login">Connectez avec le plateforme ma cantine</a>
+{% endblock %}

@@ -1,9 +1,49 @@
-{% if profile %}
-<pre>
-{{ profile|tojson }}
-</pre>
-<pre>
-{{ previews|tojson }}
-</pre>
-<a href="/logout">logout</a>
-{% endif %}
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Profile{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <p>Bonjour {{ profile['firstName'] }}</p>
+  <p><a href="/logout">Se deconnecter</a></p>
+
+  {% if canteen %}
+    <h2>Modifiez "{{ canteen['name'] }}"</h2>
+    {% if status %}
+      <p>L'API a répondu avec le statut {{ status }}</p>
+    {% endif %}
+    {% if error %}
+      <p>Il y a eu un erreur :</p>
+      <pre>{{ error }}</pre>
+    {% endif %}
+    <form action='/profile' method='post'>
+      <input type='hidden' name="canteen_id" value="{{ canteen['id'] }}" />
+      <div>
+        <label for='name'>Nom de la cantine</label>
+        <input name='canteen_name' id='name' value="{{ canteen['name'] }}" />
+      </div>
+      <br />
+      {% if diagnostic %}
+        <input type='hidden' name='diagnostic_id' value="{{ diagnostic['id'] }}" />
+      {% endif %}
+      <input type='hidden' name='year' value="{{ year }}" />
+      <div>
+        <label for='total'>Somme des achats {{ year }}</label>
+        <input name='total' id='total'  value="{{ diagnostic['valueTotalHt'] if diagnostic }}" />
+      </div>
+      <br />
+      <button>Valider</button>
+    </form>
+  {% else %}
+    <p>Créez une cantine sur la plateforme ma cantine pour tester les fonctionnalités de modification</p>
+  {% endif %}
+
+  <h2>Toutes mes cantines</h2>
+  <ul>
+    {% for preview in previews %}
+      <li>{{ preview['name'] }}</li>
+    {% endfor %}
+  </ul>
+  </pre>
+{% endblock %}
