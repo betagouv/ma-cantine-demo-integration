@@ -18,7 +18,7 @@ Nous vous conseillons d'utiliser *venv*. Les commandes pour macOS/Linux :
 
 ```
 cd ma-cantine-demo-integration
-python3 -m venv venv
+python3 -m venv venv (ou bien `virtualenv -p python3 venv)
 . venv/bin/activate
 pip install -r requirements.txt
 ```
