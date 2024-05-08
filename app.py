@@ -3,6 +3,7 @@ from flask import url_for, render_template, redirect
 from flask import session, request
 from authlib.integrations.flask_client import OAuth
 import os
+import datetime
 
 app = Flask(__name__)
 app.secret_key = os.getenv('SECRET_KEY')
@@ -72,7 +73,7 @@ def profile():
 
         # get first canteen and last year's diagnostic
         canteen = None
-        year = 2021
+        year = datetime.date.today().year - 1
         diagnostic = None
         if previews[0]:
             resp = oauth.ma_cantine.get(f"api/v1/canteens/{ previews[0]['id'] }", token=token)
